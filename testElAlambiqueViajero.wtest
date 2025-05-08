@@ -1,4 +1,6 @@
 import elAlambiqueViajero.*
+import alambiCarrera.*
+
 test "luke cuenta cuando va de viaje"{
     luke.viajar(paris)
     assert.equals(1, luke.cantidadViajes())
@@ -55,10 +57,16 @@ test "luke viaja 2 veces, quiere viajar a Paris y no puede"{
 }
 
 test "luke viaja a hurlingham en el convertible convertido en chatarra" {
-  luke.vehiculo(convertible)
-  convertible.convertir(chatarra)
-  luke.viajar(hurlingham)
-  assert.equals("sticker de la Unahur",luke.recuerdo())
-  assert.equals(5,chatarra.cañones())
-
+       luke.vehiculo(convertible)
+       convertible.convertir(chatarra)
+       luke.viajar(hurlingham)
+       assert.equals("sticker de la Unahur",luke.recuerdo())
+       assert.equals(5,chatarra.cañones())
   }
+
+  test "se organiza una carrera, pero se cambia la ciudad" {
+    carrera.definirCiudad(carreraParis)
+    carrera.inscribir(tortugaDePierre)
+    carrera.inscribir(antiguallaBlindada)
+    assert.equals([tortugaDePierre, antiguallaBlindada], carrera.inscriptos())
+}
